@@ -1,6 +1,8 @@
 package BMI
 
-import "fmt"
+import (
+	. "fmt"
+)
 
 type BMI interface {
 	calculate() float64
@@ -19,10 +21,10 @@ func (h Human) calculate() float64 {
 func Compare(h BMI) {
 	switch {
 	case h.calculate() > 24:
-		fmt.Println("You should go on a diet!")
+		Println("You should go on a diet!")
 	case h.calculate() < 18.5:
-		fmt.Println("You should put on weight!")
+		Println("You should put on weight!")
 	default:
-		fmt.Println("How fit you are! Try to keep it")
+		Println("How fit you are! Try to keep it")
 	}
 }
