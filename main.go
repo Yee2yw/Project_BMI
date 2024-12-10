@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Project_BMI/BMI"
+	"Project_BMI/BMItest"
 	"bufio"
 	. "fmt"
 	"os"
@@ -29,6 +29,6 @@ func main() {
 		return
 	}
 
-	h := BMI.BMI(&BMI.Human{Height: height, Weight: weight}) // 注意高度单位应为米
-	BMI.Compare(h)
+	h := BMItest.BMI(&BMItest.Human{Height: height, Weight: weight}) // 注意高度单位应为米
+	BMItest.Compare(h)
 }

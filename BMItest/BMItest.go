@@ -1,4 +1,4 @@
-package BMI
+package BMItest
 
 import (
 	. "fmt"
@@ -19,12 +19,24 @@ func (h Human) calculate() float64 {
 }
 
 func Compare(h BMI) {
-	switch {
-	case h.calculate() > 24:
-		Println("You should go on a diet!")
-	case h.calculate() < 18.5:
-		Println("You should put on weight!")
+	c := make(chan float64)
+
+	go func() {
+		c <- h.calculate()
+	}()
+
+	select {
+	case num := <-c:
+		if num > 24 {
+			Println("You should go on a diet!")
+			close(c)
+		}
+		if num < 18.5 {
+			Println("You should put on weight!")
+			close(c)
+		}
 	default:
 		Println("How fit you are! Try to keep it")
+		close(c)
 	}
 }
